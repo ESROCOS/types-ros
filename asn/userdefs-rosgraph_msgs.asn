@@ -1,0 +1,16 @@
+-- Generated from userdefs.asn.mako for package rosgraph_msgs
+
+UserDefs-Rosgraph-msgs-Types DEFINITIONS ::=
+BEGIN
+
+IMPORTS T-UInt32 FROM TASTE-BasicTypes;
+
+    -- Dummy type (TASTE doesn't handle the includes correctly if an ASN.1 file defines only constants)
+    Dummy-Rosgraph-msgs-Types-T ::= T-UInt32
+
+    -- Size constants definitions: to be set according to the application's needs
+
+    -- Size constant for type Rosgraph-msgs-Log
+    max-Rosgraph-msgs-Log T-UInt32 ::= 60
+
+END

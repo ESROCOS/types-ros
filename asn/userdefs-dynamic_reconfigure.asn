@@ -1,0 +1,22 @@
+-- Generated from userdefs.asn.mako for package dynamic_reconfigure
+
+UserDefs-Dynamic-reconfigure-Types DEFINITIONS ::=
+BEGIN
+
+IMPORTS T-UInt32 FROM TASTE-BasicTypes;
+
+    -- Dummy type (TASTE doesn't handle the includes correctly if an ASN.1 file defines only constants)
+    Dummy-Dynamic-reconfigure-Types-T ::= T-UInt32
+
+    -- Size constants definitions: to be set according to the application's needs
+
+    -- Size constant for type Dynamic-reconfigure-ConfigDescription
+    max-Dynamic-reconfigure-ConfigDescription T-UInt32 ::= 60
+
+    -- Size constant for type Dynamic-reconfigure-Config
+    max-Dynamic-reconfigure-Config T-UInt32 ::= 60
+
+    -- Size constant for type Dynamic-reconfigure-Group
+    max-Dynamic-reconfigure-Group T-UInt32 ::= 60
+
+END

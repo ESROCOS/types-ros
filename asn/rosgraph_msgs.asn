@@ -1,0 +1,135 @@
+-- Generated from package.asn.mako for package rosgraph_msgs
+
+Rosgraph-msgs-Types DEFINITIONS ::=
+BEGIN
+
+IMPORTS
+T-Boolean, T-Int8, T-UInt8, T-Int32, T-UInt32 FROM TASTE-BasicTypes
+T-Int16, T-UInt16, T-Int64, T-UInt64, T-Float, T-Double, T-String, T-Time FROM TASTE-ExtendedTypes
+Std-msgs-Header FROM Std-msgs-Types
+max-Rosgraph-msgs-Log, Dummy-Rosgraph-msgs-Types-T FROM UserDefs-Rosgraph-msgs-Types;
+    -- ================================================================================
+    -- Message Rosgraph-msgs-Types/Clock
+    -- ================================================================================
+    -- # roslib/Clock is used for publishing simulated time in ROS. 
+    -- # This message simply communicates the current time.
+    -- # For more information, see http://www.ros.org/wiki/Clock
+    -- time clock
+    -- ================================================================================
+    -- ASN.1 type for Rosgraph-msgs-Types/Clock
+    Rosgraph-msgs-Clock ::= T-Time
+
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Rosgraph-msgs-Types/Log
+    -- ================================================================================
+    -- ##
+    -- ## Severity level constants
+    -- ##
+    -- byte DEBUG=1 #debug level
+    -- byte INFO=2  #general level
+    -- byte WARN=4  #warning level
+    -- byte ERROR=8 #error level
+    -- byte FATAL=16 #fatal/critical level
+    -- ##
+    -- ## Fields
+    -- ##
+    -- Header header
+    -- byte level
+    -- string name # name of the node
+    -- string msg # message 
+    -- string file # file the message came from
+    -- string function # function the message came from
+    -- uint32 line # line the message came from
+    -- string[] topics # topic names that the node publishes
+    -- 
+    -- ================================================================================
+    -- MSG: std_msgs/Header
+    -- # Standard metadata for higher-level stamped data types.
+    -- # This is generally used to communicate timestamped data 
+    -- # in a particular coordinate frame.
+    -- # 
+    -- # sequence ID: consecutively increasing ID 
+    -- uint32 seq
+    -- #Two-integer timestamp that is expressed as:
+    -- # * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
+    -- # * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
+    -- # time-handling sugar is provided by the client library
+    -- time stamp
+    -- #Frame this data is associated with
+    -- # 0: no frame
+    -- # 1: global frame
+    -- string frame_id
+    -- ================================================================================
+    -- ASN.1 type for Rosgraph-msgs-Types/Log
+    Rosgraph-msgs-Log ::= SEQUENCE
+    {
+        header Std-msgs-Header,
+        level T-Int8,
+        name-value T-String,
+        msg T-String,
+        file T-String,
+        function-value T-String,
+        line T-UInt32,
+        topics SEQUENCE (SIZE(0..max-Rosgraph-msgs-Log)) OF T-String
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Rosgraph-msgs-Types/TopicStatistics
+    -- ================================================================================
+    -- # name of the topic
+    -- string topic
+    -- 
+    -- # node id of the publisher
+    -- string node_pub
+    -- 
+    -- # node id of the subscriber
+    -- string node_sub
+    -- 
+    -- # the statistics apply to this time window
+    -- time window_start
+    -- time window_stop
+    -- 
+    -- # number of messages delivered during the window
+    -- int32 delivered_msgs
+    -- # numbers of messages dropped during the window
+    -- int32 dropped_msgs
+    -- 
+    -- # traffic during the window, in bytes
+    -- int32 traffic
+    -- 
+    -- # mean/stddev/max period between two messages
+    -- duration period_mean
+    -- duration period_stddev
+    -- duration period_max
+    -- 
+    -- # mean/stddev/max age of the message based on the
+    -- # timestamp in the message header. In case the
+    -- # message does not have a header, it will be 0.
+    -- duration stamp_age_mean
+    -- duration stamp_age_stddev
+    -- duration stamp_age_max
+    -- ================================================================================
+    -- ASN.1 type for Rosgraph-msgs-Types/TopicStatistics
+    Rosgraph-msgs-TopicStatistics ::= SEQUENCE
+    {
+        topic T-String,
+        node-pub T-String,
+        node-sub T-String,
+        window-start T-Time,
+        window-stop T-Time,
+        delivered-msgs T-Int32,
+        dropped-msgs T-Int32,
+        traffic T-Int32,
+        period-mean T-Time,
+        period-stddev T-Time,
+        period-max T-Time,
+        stamp-age-mean T-Time,
+        stamp-age-stddev T-Time,
+        stamp-age-max T-Time
+    }
+    -- ================================================================================
+
+END

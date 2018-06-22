@@ -1,0 +1,19 @@
+-- Generated from userdefs.asn.mako for package diagnostic_msgs
+
+UserDefs-Diagnostic-msgs-Types DEFINITIONS ::=
+BEGIN
+
+IMPORTS T-UInt32 FROM TASTE-BasicTypes;
+
+    -- Dummy type (TASTE doesn't handle the includes correctly if an ASN.1 file defines only constants)
+    Dummy-Diagnostic-msgs-Types-T ::= T-UInt32
+
+    -- Size constants definitions: to be set according to the application's needs
+
+    -- Size constant for type Diagnostic-msgs-DiagnosticArray
+    max-Diagnostic-msgs-DiagnosticArray T-UInt32 ::= 60
+
+    -- Size constant for type Diagnostic-msgs-DiagnosticStatus
+    max-Diagnostic-msgs-DiagnosticStatus T-UInt32 ::= 60
+
+END

@@ -1,0 +1,31 @@
+-- Generated from userdefs.asn.mako for package gazebo_msgs
+
+UserDefs-Gazebo-msgs-Types DEFINITIONS ::=
+BEGIN
+
+IMPORTS T-UInt32 FROM TASTE-BasicTypes;
+
+    -- Dummy type (TASTE doesn't handle the includes correctly if an ASN.1 file defines only constants)
+    Dummy-Gazebo-msgs-Types-T ::= T-UInt32
+
+    -- Size constants definitions: to be set according to the application's needs
+
+    -- Size constant for type Gazebo-msgs-ODEJointProperties
+    max-Gazebo-msgs-ODEJointProperties T-UInt32 ::= 60
+
+    -- Size constant for type Gazebo-msgs-ModelStates
+    max-Gazebo-msgs-ModelStates T-UInt32 ::= 60
+
+    -- Size constant for type Gazebo-msgs-ContactState
+    max-Gazebo-msgs-ContactState T-UInt32 ::= 60
+
+    -- Size constant for type Gazebo-msgs-LinkStates
+    max-Gazebo-msgs-LinkStates T-UInt32 ::= 60
+
+    -- Size constant for type Gazebo-msgs-ContactsState
+    max-Gazebo-msgs-ContactsState T-UInt32 ::= 60
+
+    -- Size constant for type Gazebo-msgs-WorldState
+    max-Gazebo-msgs-WorldState T-UInt32 ::= 60
+
+END

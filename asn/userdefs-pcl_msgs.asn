@@ -1,0 +1,25 @@
+-- Generated from userdefs.asn.mako for package pcl_msgs
+
+UserDefs-Pcl-msgs-Types DEFINITIONS ::=
+BEGIN
+
+IMPORTS T-UInt32 FROM TASTE-BasicTypes;
+
+    -- Dummy type (TASTE doesn't handle the includes correctly if an ASN.1 file defines only constants)
+    Dummy-Pcl-msgs-Types-T ::= T-UInt32
+
+    -- Size constants definitions: to be set according to the application's needs
+
+    -- Size constant for type Pcl-msgs-ModelCoefficients
+    max-Pcl-msgs-ModelCoefficients T-UInt32 ::= 60
+
+    -- Size constant for type Pcl-msgs-PointIndices
+    max-Pcl-msgs-PointIndices T-UInt32 ::= 60
+
+    -- Size constant for type Pcl-msgs-PolygonMesh
+    max-Pcl-msgs-PolygonMesh T-UInt32 ::= 60
+
+    -- Size constant for type Pcl-msgs-Vertices
+    max-Pcl-msgs-Vertices T-UInt32 ::= 60
+
+END

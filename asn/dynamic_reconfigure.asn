@@ -1,0 +1,263 @@
+-- Generated from package.asn.mako for package dynamic_reconfigure
+
+Dynamic-reconfigure-Types DEFINITIONS ::=
+BEGIN
+
+IMPORTS
+T-Boolean, T-Int8, T-UInt8, T-Int32, T-UInt32 FROM TASTE-BasicTypes
+T-Int16, T-UInt16, T-Int64, T-UInt64, T-Float, T-Double, T-String, T-Time FROM TASTE-ExtendedTypes
+max-Dynamic-reconfigure-ConfigDescription, max-Dynamic-reconfigure-Config, max-Dynamic-reconfigure-Group, Dummy-Dynamic-reconfigure-Types-T FROM UserDefs-Dynamic-reconfigure-Types;
+    -- ================================================================================
+    -- Message Dynamic-reconfigure-Types/BoolParameter
+    -- ================================================================================
+    -- string name
+    -- bool value
+    -- ================================================================================
+    -- ASN.1 type for Dynamic-reconfigure-Types/BoolParameter
+    Dynamic-reconfigure-BoolParameter ::= SEQUENCE
+    {
+        name-value T-String,
+        value T-Boolean
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Dynamic-reconfigure-Types/Config
+    -- ================================================================================
+    -- BoolParameter[] bools
+    -- IntParameter[] ints
+    -- StrParameter[] strs
+    -- DoubleParameter[] doubles
+    -- GroupState[] groups
+    -- 
+    -- ================================================================================
+    -- MSG: dynamic_reconfigure/BoolParameter
+    -- string name
+    -- bool value
+    -- 
+    -- ================================================================================
+    -- MSG: dynamic_reconfigure/IntParameter
+    -- string name
+    -- int32 value
+    -- 
+    -- ================================================================================
+    -- MSG: dynamic_reconfigure/StrParameter
+    -- string name
+    -- string value
+    -- 
+    -- ================================================================================
+    -- MSG: dynamic_reconfigure/DoubleParameter
+    -- string name
+    -- float64 value
+    -- 
+    -- ================================================================================
+    -- MSG: dynamic_reconfigure/GroupState
+    -- string name
+    -- bool state
+    -- int32 id
+    -- int32 parent
+    -- ================================================================================
+    -- ASN.1 type for Dynamic-reconfigure-Types/Config
+    Dynamic-reconfigure-Config ::= SEQUENCE
+    {
+        bools SEQUENCE (SIZE(0..max-Dynamic-reconfigure-Config)) OF Dynamic-reconfigure-BoolParameter,
+        ints SEQUENCE (SIZE(0..max-Dynamic-reconfigure-Config)) OF Dynamic-reconfigure-IntParameter,
+        strs SEQUENCE (SIZE(0..max-Dynamic-reconfigure-Config)) OF Dynamic-reconfigure-StrParameter,
+        doubles SEQUENCE (SIZE(0..max-Dynamic-reconfigure-Config)) OF Dynamic-reconfigure-DoubleParameter,
+        groups SEQUENCE (SIZE(0..max-Dynamic-reconfigure-Config)) OF Dynamic-reconfigure-GroupState
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Dynamic-reconfigure-Types/ConfigDescription
+    -- ================================================================================
+    -- Group[] groups
+    -- Config max
+    -- Config min
+    -- Config dflt
+    -- 
+    -- ================================================================================
+    -- MSG: dynamic_reconfigure/Group
+    -- string name
+    -- string type
+    -- ParamDescription[] parameters
+    -- int32 parent 
+    -- int32 id
+    -- 
+    -- ================================================================================
+    -- MSG: dynamic_reconfigure/ParamDescription
+    -- string name
+    -- string type
+    -- uint32 level
+    -- string description
+    -- string edit_method
+    -- 
+    -- ================================================================================
+    -- MSG: dynamic_reconfigure/Config
+    -- BoolParameter[] bools
+    -- IntParameter[] ints
+    -- StrParameter[] strs
+    -- DoubleParameter[] doubles
+    -- GroupState[] groups
+    -- 
+    -- ================================================================================
+    -- MSG: dynamic_reconfigure/BoolParameter
+    -- string name
+    -- bool value
+    -- 
+    -- ================================================================================
+    -- MSG: dynamic_reconfigure/IntParameter
+    -- string name
+    -- int32 value
+    -- 
+    -- ================================================================================
+    -- MSG: dynamic_reconfigure/StrParameter
+    -- string name
+    -- string value
+    -- 
+    -- ================================================================================
+    -- MSG: dynamic_reconfigure/DoubleParameter
+    -- string name
+    -- float64 value
+    -- 
+    -- ================================================================================
+    -- MSG: dynamic_reconfigure/GroupState
+    -- string name
+    -- bool state
+    -- int32 id
+    -- int32 parent
+    -- ================================================================================
+    -- ASN.1 type for Dynamic-reconfigure-Types/ConfigDescription
+    Dynamic-reconfigure-ConfigDescription ::= SEQUENCE
+    {
+        groups SEQUENCE (SIZE(0..max-Dynamic-reconfigure-ConfigDescription)) OF Dynamic-reconfigure-Group,
+        max Dynamic-reconfigure-Config,
+        min Dynamic-reconfigure-Config,
+        dflt Dynamic-reconfigure-Config
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Dynamic-reconfigure-Types/DoubleParameter
+    -- ================================================================================
+    -- string name
+    -- float64 value
+    -- ================================================================================
+    -- ASN.1 type for Dynamic-reconfigure-Types/DoubleParameter
+    Dynamic-reconfigure-DoubleParameter ::= SEQUENCE
+    {
+        name-value T-String,
+        value T-Double
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Dynamic-reconfigure-Types/Group
+    -- ================================================================================
+    -- string name
+    -- string type
+    -- ParamDescription[] parameters
+    -- int32 parent 
+    -- int32 id
+    -- 
+    -- ================================================================================
+    -- MSG: dynamic_reconfigure/ParamDescription
+    -- string name
+    -- string type
+    -- uint32 level
+    -- string description
+    -- string edit_method
+    -- ================================================================================
+    -- ASN.1 type for Dynamic-reconfigure-Types/Group
+    Dynamic-reconfigure-Group ::= SEQUENCE
+    {
+        name-value T-String,
+        type-value T-String,
+        parameters SEQUENCE (SIZE(0..max-Dynamic-reconfigure-Group)) OF Dynamic-reconfigure-ParamDescription,
+        parent-value T-Int32,
+        id T-Int32
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Dynamic-reconfigure-Types/GroupState
+    -- ================================================================================
+    -- string name
+    -- bool state
+    -- int32 id
+    -- int32 parent
+    -- ================================================================================
+    -- ASN.1 type for Dynamic-reconfigure-Types/GroupState
+    Dynamic-reconfigure-GroupState ::= SEQUENCE
+    {
+        name-value T-String,
+        state-value T-Boolean,
+        id T-Int32,
+        parent-value T-Int32
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Dynamic-reconfigure-Types/IntParameter
+    -- ================================================================================
+    -- string name
+    -- int32 value
+    -- ================================================================================
+    -- ASN.1 type for Dynamic-reconfigure-Types/IntParameter
+    Dynamic-reconfigure-IntParameter ::= SEQUENCE
+    {
+        name-value T-String,
+        value T-Int32
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Dynamic-reconfigure-Types/ParamDescription
+    -- ================================================================================
+    -- string name
+    -- string type
+    -- uint32 level
+    -- string description
+    -- string edit_method
+    -- ================================================================================
+    -- ASN.1 type for Dynamic-reconfigure-Types/ParamDescription
+    Dynamic-reconfigure-ParamDescription ::= SEQUENCE
+    {
+        name-value T-String,
+        type-value T-String,
+        level T-UInt32,
+        description T-String,
+        edit-method T-String
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Dynamic-reconfigure-Types/SensorLevels
+    -- ================================================================================
+    -- # This message is deprecated, please use driver_base/SensorLevels instead.
+    -- 
+    -- byte RECONFIGURE_CLOSE = 3  # Parameters that need a sensor to be stopped completely when changed
+    -- byte RECONFIGURE_STOP = 1  # Parameters that need a sensor to stop streaming when changed
+    -- byte RECONFIGURE_RUNNING = 0 # Parameters that can be changed while a sensor is streaming
+    -- ================================================================================
+    -- ASN.1 type for Dynamic-reconfigure-Types/SensorLevels
+    Dynamic-reconfigure-SensorLevels ::= SEQUENCE
+    {
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Dynamic-reconfigure-Types/StrParameter
+    -- ================================================================================
+    -- string name
+    -- string value
+    -- ================================================================================
+    -- ASN.1 type for Dynamic-reconfigure-Types/StrParameter
+    Dynamic-reconfigure-StrParameter ::= SEQUENCE
+    {
+        name-value T-String,
+        value T-String
+    }
+    -- ================================================================================
+
+END

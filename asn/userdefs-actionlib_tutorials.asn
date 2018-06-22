@@ -1,0 +1,19 @@
+-- Generated from userdefs.asn.mako for package actionlib_tutorials
+
+UserDefs-Actionlib-tutorials-Types DEFINITIONS ::=
+BEGIN
+
+IMPORTS T-UInt32 FROM TASTE-BasicTypes;
+
+    -- Dummy type (TASTE doesn't handle the includes correctly if an ASN.1 file defines only constants)
+    Dummy-Actionlib-tutorials-Types-T ::= T-UInt32
+
+    -- Size constants definitions: to be set according to the application's needs
+
+    -- Size constant for type Actionlib-tutorials-FibonacciFeedback
+    max-Actionlib-tutorials-FibonacciFeedback T-UInt32 ::= 60
+
+    -- Size constant for type Actionlib-tutorials-FibonacciResult
+    max-Actionlib-tutorials-FibonacciResult T-UInt32 ::= 60
+
+END

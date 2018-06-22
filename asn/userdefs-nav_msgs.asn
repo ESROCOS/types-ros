@@ -1,0 +1,22 @@
+-- Generated from userdefs.asn.mako for package nav_msgs
+
+UserDefs-Nav-msgs-Types DEFINITIONS ::=
+BEGIN
+
+IMPORTS T-UInt32 FROM TASTE-BasicTypes;
+
+    -- Dummy type (TASTE doesn't handle the includes correctly if an ASN.1 file defines only constants)
+    Dummy-Nav-msgs-Types-T ::= T-UInt32
+
+    -- Size constants definitions: to be set according to the application's needs
+
+    -- Size constant for type Nav-msgs-Path
+    max-Nav-msgs-Path T-UInt32 ::= 60
+
+    -- Size constant for type Nav-msgs-OccupancyGrid
+    max-Nav-msgs-OccupancyGrid T-UInt32 ::= 60
+
+    -- Size constant for type Nav-msgs-GridCells
+    max-Nav-msgs-GridCells T-UInt32 ::= 60
+
+END

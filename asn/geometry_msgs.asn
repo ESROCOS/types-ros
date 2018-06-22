@@ -1,0 +1,1221 @@
+-- Generated from package.asn.mako for package geometry_msgs
+
+Geometry-msgs-Types DEFINITIONS ::=
+BEGIN
+
+IMPORTS
+T-Boolean, T-Int8, T-UInt8, T-Int32, T-UInt32 FROM TASTE-BasicTypes
+T-Int16, T-UInt16, T-Int64, T-UInt64, T-Float, T-Double, T-String, T-Time FROM TASTE-ExtendedTypes
+Std-msgs-Header FROM Std-msgs-Types
+max-Geometry-msgs-PoseArray, max-Geometry-msgs-Polygon, Dummy-Geometry-msgs-Types-T FROM UserDefs-Geometry-msgs-Types;
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/Accel
+    -- ================================================================================
+    -- # This expresses acceleration in free space broken into its linear and angular parts.
+    -- Vector3  linear
+    -- Vector3  angular
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Vector3
+    -- # This represents a vector in free space. 
+    -- # It is only meant to represent a direction. Therefore, it does not
+    -- # make sense to apply a translation to it (e.g., when applying a 
+    -- # generic rigid transformation to a Vector3, tf2 will only apply the
+    -- # rotation). If you want your data to be translatable too, use the
+    -- # geometry_msgs/Point message instead.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/Accel
+    Geometry-msgs-Accel ::= SEQUENCE
+    {
+        linear Geometry-msgs-Vector3,
+        angular Geometry-msgs-Vector3
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/AccelStamped
+    -- ================================================================================
+    -- # An accel with reference coordinate frame and timestamp
+    -- Header header
+    -- Accel accel
+    -- 
+    -- ================================================================================
+    -- MSG: std_msgs/Header
+    -- # Standard metadata for higher-level stamped data types.
+    -- # This is generally used to communicate timestamped data 
+    -- # in a particular coordinate frame.
+    -- # 
+    -- # sequence ID: consecutively increasing ID 
+    -- uint32 seq
+    -- #Two-integer timestamp that is expressed as:
+    -- # * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
+    -- # * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
+    -- # time-handling sugar is provided by the client library
+    -- time stamp
+    -- #Frame this data is associated with
+    -- # 0: no frame
+    -- # 1: global frame
+    -- string frame_id
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Accel
+    -- # This expresses acceleration in free space broken into its linear and angular parts.
+    -- Vector3  linear
+    -- Vector3  angular
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Vector3
+    -- # This represents a vector in free space. 
+    -- # It is only meant to represent a direction. Therefore, it does not
+    -- # make sense to apply a translation to it (e.g., when applying a 
+    -- # generic rigid transformation to a Vector3, tf2 will only apply the
+    -- # rotation). If you want your data to be translatable too, use the
+    -- # geometry_msgs/Point message instead.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/AccelStamped
+    Geometry-msgs-AccelStamped ::= SEQUENCE
+    {
+        header Std-msgs-Header,
+        accel Geometry-msgs-Accel
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/AccelWithCovariance
+    -- ================================================================================
+    -- # This expresses acceleration in free space with uncertainty.
+    -- 
+    -- Accel accel
+    -- 
+    -- # Row-major representation of the 6x6 covariance matrix
+    -- # The orientation parameters use a fixed-axis representation.
+    -- # In order, the parameters are:
+    -- # (x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis)
+    -- float64[36] covariance
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Accel
+    -- # This expresses acceleration in free space broken into its linear and angular parts.
+    -- Vector3  linear
+    -- Vector3  angular
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Vector3
+    -- # This represents a vector in free space. 
+    -- # It is only meant to represent a direction. Therefore, it does not
+    -- # make sense to apply a translation to it (e.g., when applying a 
+    -- # generic rigid transformation to a Vector3, tf2 will only apply the
+    -- # rotation). If you want your data to be translatable too, use the
+    -- # geometry_msgs/Point message instead.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/AccelWithCovariance
+    Geometry-msgs-AccelWithCovariance ::= SEQUENCE
+    {
+        accel Geometry-msgs-Accel,
+        covariance SEQUENCE (SIZE(36)) OF T-Double
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/AccelWithCovarianceStamped
+    -- ================================================================================
+    -- # This represents an estimated accel with reference coordinate frame and timestamp.
+    -- Header header
+    -- AccelWithCovariance accel
+    -- 
+    -- ================================================================================
+    -- MSG: std_msgs/Header
+    -- # Standard metadata for higher-level stamped data types.
+    -- # This is generally used to communicate timestamped data 
+    -- # in a particular coordinate frame.
+    -- # 
+    -- # sequence ID: consecutively increasing ID 
+    -- uint32 seq
+    -- #Two-integer timestamp that is expressed as:
+    -- # * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
+    -- # * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
+    -- # time-handling sugar is provided by the client library
+    -- time stamp
+    -- #Frame this data is associated with
+    -- # 0: no frame
+    -- # 1: global frame
+    -- string frame_id
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/AccelWithCovariance
+    -- # This expresses acceleration in free space with uncertainty.
+    -- 
+    -- Accel accel
+    -- 
+    -- # Row-major representation of the 6x6 covariance matrix
+    -- # The orientation parameters use a fixed-axis representation.
+    -- # In order, the parameters are:
+    -- # (x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis)
+    -- float64[36] covariance
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Accel
+    -- # This expresses acceleration in free space broken into its linear and angular parts.
+    -- Vector3  linear
+    -- Vector3  angular
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Vector3
+    -- # This represents a vector in free space. 
+    -- # It is only meant to represent a direction. Therefore, it does not
+    -- # make sense to apply a translation to it (e.g., when applying a 
+    -- # generic rigid transformation to a Vector3, tf2 will only apply the
+    -- # rotation). If you want your data to be translatable too, use the
+    -- # geometry_msgs/Point message instead.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/AccelWithCovarianceStamped
+    Geometry-msgs-AccelWithCovarianceStamped ::= SEQUENCE
+    {
+        header Std-msgs-Header,
+        accel Geometry-msgs-AccelWithCovariance
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/Inertia
+    -- ================================================================================
+    -- # Mass [kg]
+    -- float64 m
+    -- 
+    -- # Center of mass [m]
+    -- geometry_msgs/Vector3 com
+    -- 
+    -- # Inertia Tensor [kg-m^2]
+    -- #     | ixx ixy ixz |
+    -- # I = | ixy iyy iyz |
+    -- #     | ixz iyz izz |
+    -- float64 ixx
+    -- float64 ixy
+    -- float64 ixz
+    -- float64 iyy
+    -- float64 iyz
+    -- float64 izz
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Vector3
+    -- # This represents a vector in free space. 
+    -- # It is only meant to represent a direction. Therefore, it does not
+    -- # make sense to apply a translation to it (e.g., when applying a 
+    -- # generic rigid transformation to a Vector3, tf2 will only apply the
+    -- # rotation). If you want your data to be translatable too, use the
+    -- # geometry_msgs/Point message instead.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/Inertia
+    Geometry-msgs-Inertia ::= SEQUENCE
+    {
+        m T-Double,
+        com Geometry-msgs-Vector3,
+        ixx T-Double,
+        ixy T-Double,
+        ixz T-Double,
+        iyy T-Double,
+        iyz T-Double,
+        izz T-Double
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/InertiaStamped
+    -- ================================================================================
+    -- Header header
+    -- Inertia inertia
+    -- 
+    -- ================================================================================
+    -- MSG: std_msgs/Header
+    -- # Standard metadata for higher-level stamped data types.
+    -- # This is generally used to communicate timestamped data 
+    -- # in a particular coordinate frame.
+    -- # 
+    -- # sequence ID: consecutively increasing ID 
+    -- uint32 seq
+    -- #Two-integer timestamp that is expressed as:
+    -- # * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
+    -- # * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
+    -- # time-handling sugar is provided by the client library
+    -- time stamp
+    -- #Frame this data is associated with
+    -- # 0: no frame
+    -- # 1: global frame
+    -- string frame_id
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Inertia
+    -- # Mass [kg]
+    -- float64 m
+    -- 
+    -- # Center of mass [m]
+    -- geometry_msgs/Vector3 com
+    -- 
+    -- # Inertia Tensor [kg-m^2]
+    -- #     | ixx ixy ixz |
+    -- # I = | ixy iyy iyz |
+    -- #     | ixz iyz izz |
+    -- float64 ixx
+    -- float64 ixy
+    -- float64 ixz
+    -- float64 iyy
+    -- float64 iyz
+    -- float64 izz
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Vector3
+    -- # This represents a vector in free space. 
+    -- # It is only meant to represent a direction. Therefore, it does not
+    -- # make sense to apply a translation to it (e.g., when applying a 
+    -- # generic rigid transformation to a Vector3, tf2 will only apply the
+    -- # rotation). If you want your data to be translatable too, use the
+    -- # geometry_msgs/Point message instead.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/InertiaStamped
+    Geometry-msgs-InertiaStamped ::= SEQUENCE
+    {
+        header Std-msgs-Header,
+        inertia Geometry-msgs-Inertia
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/Point
+    -- ================================================================================
+    -- # This contains the position of a point in free space
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/Point
+    Geometry-msgs-Point ::= SEQUENCE
+    {
+        x T-Double,
+        y T-Double,
+        z T-Double
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/Point32
+    -- ================================================================================
+    -- # This contains the position of a point in free space(with 32 bits of precision).
+    -- # It is recommeded to use Point wherever possible instead of Point32.  
+    -- # 
+    -- # This recommendation is to promote interoperability.  
+    -- #
+    -- # This message is designed to take up less space when sending
+    -- # lots of points at once, as in the case of a PointCloud.  
+    -- 
+    -- float32 x
+    -- float32 y
+    -- float32 z    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/Point32
+    Geometry-msgs-Point32 ::= SEQUENCE
+    {
+        x T-Float,
+        y T-Float,
+        z T-Float
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/PointStamped
+    -- ================================================================================
+    -- # This represents a Point with reference coordinate frame and timestamp
+    -- Header header
+    -- Point point
+    -- 
+    -- ================================================================================
+    -- MSG: std_msgs/Header
+    -- # Standard metadata for higher-level stamped data types.
+    -- # This is generally used to communicate timestamped data 
+    -- # in a particular coordinate frame.
+    -- # 
+    -- # sequence ID: consecutively increasing ID 
+    -- uint32 seq
+    -- #Two-integer timestamp that is expressed as:
+    -- # * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
+    -- # * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
+    -- # time-handling sugar is provided by the client library
+    -- time stamp
+    -- #Frame this data is associated with
+    -- # 0: no frame
+    -- # 1: global frame
+    -- string frame_id
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Point
+    -- # This contains the position of a point in free space
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/PointStamped
+    Geometry-msgs-PointStamped ::= SEQUENCE
+    {
+        header Std-msgs-Header,
+        point Geometry-msgs-Point
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/Polygon
+    -- ================================================================================
+    -- #A specification of a polygon where the first and last points are assumed to be connected
+    -- Point32[] points
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Point32
+    -- # This contains the position of a point in free space(with 32 bits of precision).
+    -- # It is recommeded to use Point wherever possible instead of Point32.  
+    -- # 
+    -- # This recommendation is to promote interoperability.  
+    -- #
+    -- # This message is designed to take up less space when sending
+    -- # lots of points at once, as in the case of a PointCloud.  
+    -- 
+    -- float32 x
+    -- float32 y
+    -- float32 z    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/Polygon
+    Geometry-msgs-Polygon ::= SEQUENCE (SIZE(0..max-Geometry-msgs-Polygon)) OF Geometry-msgs-Point32
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/PolygonStamped
+    -- ================================================================================
+    -- # This represents a Polygon with reference coordinate frame and timestamp
+    -- Header header
+    -- Polygon polygon
+    -- 
+    -- ================================================================================
+    -- MSG: std_msgs/Header
+    -- # Standard metadata for higher-level stamped data types.
+    -- # This is generally used to communicate timestamped data 
+    -- # in a particular coordinate frame.
+    -- # 
+    -- # sequence ID: consecutively increasing ID 
+    -- uint32 seq
+    -- #Two-integer timestamp that is expressed as:
+    -- # * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
+    -- # * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
+    -- # time-handling sugar is provided by the client library
+    -- time stamp
+    -- #Frame this data is associated with
+    -- # 0: no frame
+    -- # 1: global frame
+    -- string frame_id
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Polygon
+    -- #A specification of a polygon where the first and last points are assumed to be connected
+    -- Point32[] points
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Point32
+    -- # This contains the position of a point in free space(with 32 bits of precision).
+    -- # It is recommeded to use Point wherever possible instead of Point32.  
+    -- # 
+    -- # This recommendation is to promote interoperability.  
+    -- #
+    -- # This message is designed to take up less space when sending
+    -- # lots of points at once, as in the case of a PointCloud.  
+    -- 
+    -- float32 x
+    -- float32 y
+    -- float32 z    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/PolygonStamped
+    Geometry-msgs-PolygonStamped ::= SEQUENCE
+    {
+        header Std-msgs-Header,
+        polygon Geometry-msgs-Polygon
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/Pose
+    -- ================================================================================
+    -- # A representation of pose in free space, composed of position and orientation. 
+    -- Point position
+    -- Quaternion orientation
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Point
+    -- # This contains the position of a point in free space
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Quaternion
+    -- # This represents an orientation in free space in quaternion form.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- float64 w
+    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/Pose
+    Geometry-msgs-Pose ::= SEQUENCE
+    {
+        position Geometry-msgs-Point,
+        orientation Geometry-msgs-Quaternion
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/Pose2D
+    -- ================================================================================
+    -- # This expresses a position and orientation on a 2D manifold.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 theta    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/Pose2D
+    Geometry-msgs-Pose2D ::= SEQUENCE
+    {
+        x T-Double,
+        y T-Double,
+        theta T-Double
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/PoseArray
+    -- ================================================================================
+    -- # An array of poses with a header for global reference.
+    -- 
+    -- Header header
+    -- 
+    -- Pose[] poses
+    -- 
+    -- ================================================================================
+    -- MSG: std_msgs/Header
+    -- # Standard metadata for higher-level stamped data types.
+    -- # This is generally used to communicate timestamped data 
+    -- # in a particular coordinate frame.
+    -- # 
+    -- # sequence ID: consecutively increasing ID 
+    -- uint32 seq
+    -- #Two-integer timestamp that is expressed as:
+    -- # * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
+    -- # * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
+    -- # time-handling sugar is provided by the client library
+    -- time stamp
+    -- #Frame this data is associated with
+    -- # 0: no frame
+    -- # 1: global frame
+    -- string frame_id
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Pose
+    -- # A representation of pose in free space, composed of position and orientation. 
+    -- Point position
+    -- Quaternion orientation
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Point
+    -- # This contains the position of a point in free space
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Quaternion
+    -- # This represents an orientation in free space in quaternion form.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- float64 w
+    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/PoseArray
+    Geometry-msgs-PoseArray ::= SEQUENCE
+    {
+        header Std-msgs-Header,
+        poses SEQUENCE (SIZE(0..max-Geometry-msgs-PoseArray)) OF Geometry-msgs-Pose
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/PoseStamped
+    -- ================================================================================
+    -- # A Pose with reference coordinate frame and timestamp
+    -- Header header
+    -- Pose pose
+    -- 
+    -- ================================================================================
+    -- MSG: std_msgs/Header
+    -- # Standard metadata for higher-level stamped data types.
+    -- # This is generally used to communicate timestamped data 
+    -- # in a particular coordinate frame.
+    -- # 
+    -- # sequence ID: consecutively increasing ID 
+    -- uint32 seq
+    -- #Two-integer timestamp that is expressed as:
+    -- # * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
+    -- # * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
+    -- # time-handling sugar is provided by the client library
+    -- time stamp
+    -- #Frame this data is associated with
+    -- # 0: no frame
+    -- # 1: global frame
+    -- string frame_id
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Pose
+    -- # A representation of pose in free space, composed of position and orientation. 
+    -- Point position
+    -- Quaternion orientation
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Point
+    -- # This contains the position of a point in free space
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Quaternion
+    -- # This represents an orientation in free space in quaternion form.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- float64 w
+    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/PoseStamped
+    Geometry-msgs-PoseStamped ::= SEQUENCE
+    {
+        header Std-msgs-Header,
+        pose Geometry-msgs-Pose
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/PoseWithCovariance
+    -- ================================================================================
+    -- # This represents a pose in free space with uncertainty.
+    -- 
+    -- Pose pose
+    -- 
+    -- # Row-major representation of the 6x6 covariance matrix
+    -- # The orientation parameters use a fixed-axis representation.
+    -- # In order, the parameters are:
+    -- # (x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis)
+    -- float64[36] covariance
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Pose
+    -- # A representation of pose in free space, composed of position and orientation. 
+    -- Point position
+    -- Quaternion orientation
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Point
+    -- # This contains the position of a point in free space
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Quaternion
+    -- # This represents an orientation in free space in quaternion form.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- float64 w
+    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/PoseWithCovariance
+    Geometry-msgs-PoseWithCovariance ::= SEQUENCE
+    {
+        pose Geometry-msgs-Pose,
+        covariance SEQUENCE (SIZE(36)) OF T-Double
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/PoseWithCovarianceStamped
+    -- ================================================================================
+    -- # This expresses an estimated pose with a reference coordinate frame and timestamp
+    -- 
+    -- Header header
+    -- PoseWithCovariance pose
+    -- 
+    -- ================================================================================
+    -- MSG: std_msgs/Header
+    -- # Standard metadata for higher-level stamped data types.
+    -- # This is generally used to communicate timestamped data 
+    -- # in a particular coordinate frame.
+    -- # 
+    -- # sequence ID: consecutively increasing ID 
+    -- uint32 seq
+    -- #Two-integer timestamp that is expressed as:
+    -- # * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
+    -- # * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
+    -- # time-handling sugar is provided by the client library
+    -- time stamp
+    -- #Frame this data is associated with
+    -- # 0: no frame
+    -- # 1: global frame
+    -- string frame_id
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/PoseWithCovariance
+    -- # This represents a pose in free space with uncertainty.
+    -- 
+    -- Pose pose
+    -- 
+    -- # Row-major representation of the 6x6 covariance matrix
+    -- # The orientation parameters use a fixed-axis representation.
+    -- # In order, the parameters are:
+    -- # (x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis)
+    -- float64[36] covariance
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Pose
+    -- # A representation of pose in free space, composed of position and orientation. 
+    -- Point position
+    -- Quaternion orientation
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Point
+    -- # This contains the position of a point in free space
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Quaternion
+    -- # This represents an orientation in free space in quaternion form.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- float64 w
+    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/PoseWithCovarianceStamped
+    Geometry-msgs-PoseWithCovarianceStamped ::= SEQUENCE
+    {
+        header Std-msgs-Header,
+        pose Geometry-msgs-PoseWithCovariance
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/Quaternion
+    -- ================================================================================
+    -- # This represents an orientation in free space in quaternion form.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- float64 w
+    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/Quaternion
+    Geometry-msgs-Quaternion ::= SEQUENCE
+    {
+        x T-Double,
+        y T-Double,
+        z T-Double,
+        w T-Double
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/QuaternionStamped
+    -- ================================================================================
+    -- # This represents an orientation with reference coordinate frame and timestamp.
+    -- 
+    -- Header header
+    -- Quaternion quaternion
+    -- 
+    -- ================================================================================
+    -- MSG: std_msgs/Header
+    -- # Standard metadata for higher-level stamped data types.
+    -- # This is generally used to communicate timestamped data 
+    -- # in a particular coordinate frame.
+    -- # 
+    -- # sequence ID: consecutively increasing ID 
+    -- uint32 seq
+    -- #Two-integer timestamp that is expressed as:
+    -- # * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
+    -- # * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
+    -- # time-handling sugar is provided by the client library
+    -- time stamp
+    -- #Frame this data is associated with
+    -- # 0: no frame
+    -- # 1: global frame
+    -- string frame_id
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Quaternion
+    -- # This represents an orientation in free space in quaternion form.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- float64 w
+    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/QuaternionStamped
+    Geometry-msgs-QuaternionStamped ::= SEQUENCE
+    {
+        header Std-msgs-Header,
+        quaternion Geometry-msgs-Quaternion
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/Transform
+    -- ================================================================================
+    -- # This represents the transform between two coordinate frames in free space.
+    -- 
+    -- Vector3 translation
+    -- Quaternion rotation
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Vector3
+    -- # This represents a vector in free space. 
+    -- # It is only meant to represent a direction. Therefore, it does not
+    -- # make sense to apply a translation to it (e.g., when applying a 
+    -- # generic rigid transformation to a Vector3, tf2 will only apply the
+    -- # rotation). If you want your data to be translatable too, use the
+    -- # geometry_msgs/Point message instead.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- ================================================================================
+    -- MSG: geometry_msgs/Quaternion
+    -- # This represents an orientation in free space in quaternion form.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- float64 w
+    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/Transform
+    Geometry-msgs-Transform ::= SEQUENCE
+    {
+        translation Geometry-msgs-Vector3,
+        rotation Geometry-msgs-Quaternion
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/TransformStamped
+    -- ================================================================================
+    -- # This expresses a transform from coordinate frame header.frame_id
+    -- # to the coordinate frame child_frame_id
+    -- #
+    -- # This message is mostly used by the 
+    -- # <a href="http://wiki.ros.org/tf">tf</a> package. 
+    -- # See its documentation for more information.
+    -- 
+    -- Header header
+    -- string child_frame_id # the frame id of the child frame
+    -- Transform transform
+    -- 
+    -- ================================================================================
+    -- MSG: std_msgs/Header
+    -- # Standard metadata for higher-level stamped data types.
+    -- # This is generally used to communicate timestamped data 
+    -- # in a particular coordinate frame.
+    -- # 
+    -- # sequence ID: consecutively increasing ID 
+    -- uint32 seq
+    -- #Two-integer timestamp that is expressed as:
+    -- # * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
+    -- # * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
+    -- # time-handling sugar is provided by the client library
+    -- time stamp
+    -- #Frame this data is associated with
+    -- # 0: no frame
+    -- # 1: global frame
+    -- string frame_id
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Transform
+    -- # This represents the transform between two coordinate frames in free space.
+    -- 
+    -- Vector3 translation
+    -- Quaternion rotation
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Vector3
+    -- # This represents a vector in free space. 
+    -- # It is only meant to represent a direction. Therefore, it does not
+    -- # make sense to apply a translation to it (e.g., when applying a 
+    -- # generic rigid transformation to a Vector3, tf2 will only apply the
+    -- # rotation). If you want your data to be translatable too, use the
+    -- # geometry_msgs/Point message instead.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- ================================================================================
+    -- MSG: geometry_msgs/Quaternion
+    -- # This represents an orientation in free space in quaternion form.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- float64 w
+    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/TransformStamped
+    Geometry-msgs-TransformStamped ::= SEQUENCE
+    {
+        header Std-msgs-Header,
+        child-frame-id T-String,
+        transform Geometry-msgs-Transform
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/Twist
+    -- ================================================================================
+    -- # This expresses velocity in free space broken into its linear and angular parts.
+    -- Vector3  linear
+    -- Vector3  angular
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Vector3
+    -- # This represents a vector in free space. 
+    -- # It is only meant to represent a direction. Therefore, it does not
+    -- # make sense to apply a translation to it (e.g., when applying a 
+    -- # generic rigid transformation to a Vector3, tf2 will only apply the
+    -- # rotation). If you want your data to be translatable too, use the
+    -- # geometry_msgs/Point message instead.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/Twist
+    Geometry-msgs-Twist ::= SEQUENCE
+    {
+        linear Geometry-msgs-Vector3,
+        angular Geometry-msgs-Vector3
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/TwistStamped
+    -- ================================================================================
+    -- # A twist with reference coordinate frame and timestamp
+    -- Header header
+    -- Twist twist
+    -- 
+    -- ================================================================================
+    -- MSG: std_msgs/Header
+    -- # Standard metadata for higher-level stamped data types.
+    -- # This is generally used to communicate timestamped data 
+    -- # in a particular coordinate frame.
+    -- # 
+    -- # sequence ID: consecutively increasing ID 
+    -- uint32 seq
+    -- #Two-integer timestamp that is expressed as:
+    -- # * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
+    -- # * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
+    -- # time-handling sugar is provided by the client library
+    -- time stamp
+    -- #Frame this data is associated with
+    -- # 0: no frame
+    -- # 1: global frame
+    -- string frame_id
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Twist
+    -- # This expresses velocity in free space broken into its linear and angular parts.
+    -- Vector3  linear
+    -- Vector3  angular
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Vector3
+    -- # This represents a vector in free space. 
+    -- # It is only meant to represent a direction. Therefore, it does not
+    -- # make sense to apply a translation to it (e.g., when applying a 
+    -- # generic rigid transformation to a Vector3, tf2 will only apply the
+    -- # rotation). If you want your data to be translatable too, use the
+    -- # geometry_msgs/Point message instead.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/TwistStamped
+    Geometry-msgs-TwistStamped ::= SEQUENCE
+    {
+        header Std-msgs-Header,
+        twist Geometry-msgs-Twist
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/TwistWithCovariance
+    -- ================================================================================
+    -- # This expresses velocity in free space with uncertainty.
+    -- 
+    -- Twist twist
+    -- 
+    -- # Row-major representation of the 6x6 covariance matrix
+    -- # The orientation parameters use a fixed-axis representation.
+    -- # In order, the parameters are:
+    -- # (x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis)
+    -- float64[36] covariance
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Twist
+    -- # This expresses velocity in free space broken into its linear and angular parts.
+    -- Vector3  linear
+    -- Vector3  angular
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Vector3
+    -- # This represents a vector in free space. 
+    -- # It is only meant to represent a direction. Therefore, it does not
+    -- # make sense to apply a translation to it (e.g., when applying a 
+    -- # generic rigid transformation to a Vector3, tf2 will only apply the
+    -- # rotation). If you want your data to be translatable too, use the
+    -- # geometry_msgs/Point message instead.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/TwistWithCovariance
+    Geometry-msgs-TwistWithCovariance ::= SEQUENCE
+    {
+        twist Geometry-msgs-Twist,
+        covariance SEQUENCE (SIZE(36)) OF T-Double
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/TwistWithCovarianceStamped
+    -- ================================================================================
+    -- # This represents an estimated twist with reference coordinate frame and timestamp.
+    -- Header header
+    -- TwistWithCovariance twist
+    -- 
+    -- ================================================================================
+    -- MSG: std_msgs/Header
+    -- # Standard metadata for higher-level stamped data types.
+    -- # This is generally used to communicate timestamped data 
+    -- # in a particular coordinate frame.
+    -- # 
+    -- # sequence ID: consecutively increasing ID 
+    -- uint32 seq
+    -- #Two-integer timestamp that is expressed as:
+    -- # * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
+    -- # * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
+    -- # time-handling sugar is provided by the client library
+    -- time stamp
+    -- #Frame this data is associated with
+    -- # 0: no frame
+    -- # 1: global frame
+    -- string frame_id
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/TwistWithCovariance
+    -- # This expresses velocity in free space with uncertainty.
+    -- 
+    -- Twist twist
+    -- 
+    -- # Row-major representation of the 6x6 covariance matrix
+    -- # The orientation parameters use a fixed-axis representation.
+    -- # In order, the parameters are:
+    -- # (x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis)
+    -- float64[36] covariance
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Twist
+    -- # This expresses velocity in free space broken into its linear and angular parts.
+    -- Vector3  linear
+    -- Vector3  angular
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Vector3
+    -- # This represents a vector in free space. 
+    -- # It is only meant to represent a direction. Therefore, it does not
+    -- # make sense to apply a translation to it (e.g., when applying a 
+    -- # generic rigid transformation to a Vector3, tf2 will only apply the
+    -- # rotation). If you want your data to be translatable too, use the
+    -- # geometry_msgs/Point message instead.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/TwistWithCovarianceStamped
+    Geometry-msgs-TwistWithCovarianceStamped ::= SEQUENCE
+    {
+        header Std-msgs-Header,
+        twist Geometry-msgs-TwistWithCovariance
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/Vector3
+    -- ================================================================================
+    -- # This represents a vector in free space. 
+    -- # It is only meant to represent a direction. Therefore, it does not
+    -- # make sense to apply a translation to it (e.g., when applying a 
+    -- # generic rigid transformation to a Vector3, tf2 will only apply the
+    -- # rotation). If you want your data to be translatable too, use the
+    -- # geometry_msgs/Point message instead.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/Vector3
+    Geometry-msgs-Vector3 ::= SEQUENCE
+    {
+        x T-Double,
+        y T-Double,
+        z T-Double
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/Vector3Stamped
+    -- ================================================================================
+    -- # This represents a Vector3 with reference coordinate frame and timestamp
+    -- Header header
+    -- Vector3 vector
+    -- 
+    -- ================================================================================
+    -- MSG: std_msgs/Header
+    -- # Standard metadata for higher-level stamped data types.
+    -- # This is generally used to communicate timestamped data 
+    -- # in a particular coordinate frame.
+    -- # 
+    -- # sequence ID: consecutively increasing ID 
+    -- uint32 seq
+    -- #Two-integer timestamp that is expressed as:
+    -- # * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
+    -- # * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
+    -- # time-handling sugar is provided by the client library
+    -- time stamp
+    -- #Frame this data is associated with
+    -- # 0: no frame
+    -- # 1: global frame
+    -- string frame_id
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Vector3
+    -- # This represents a vector in free space. 
+    -- # It is only meant to represent a direction. Therefore, it does not
+    -- # make sense to apply a translation to it (e.g., when applying a 
+    -- # generic rigid transformation to a Vector3, tf2 will only apply the
+    -- # rotation). If you want your data to be translatable too, use the
+    -- # geometry_msgs/Point message instead.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/Vector3Stamped
+    Geometry-msgs-Vector3Stamped ::= SEQUENCE
+    {
+        header Std-msgs-Header,
+        vector Geometry-msgs-Vector3
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/Wrench
+    -- ================================================================================
+    -- # This represents force in free space, separated into
+    -- # its linear and angular parts.
+    -- Vector3  force
+    -- Vector3  torque
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Vector3
+    -- # This represents a vector in free space. 
+    -- # It is only meant to represent a direction. Therefore, it does not
+    -- # make sense to apply a translation to it (e.g., when applying a 
+    -- # generic rigid transformation to a Vector3, tf2 will only apply the
+    -- # rotation). If you want your data to be translatable too, use the
+    -- # geometry_msgs/Point message instead.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/Wrench
+    Geometry-msgs-Wrench ::= SEQUENCE
+    {
+        force Geometry-msgs-Vector3,
+        torque Geometry-msgs-Vector3
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Geometry-msgs-Types/WrenchStamped
+    -- ================================================================================
+    -- # A wrench with reference coordinate frame and timestamp
+    -- Header header
+    -- Wrench wrench
+    -- 
+    -- ================================================================================
+    -- MSG: std_msgs/Header
+    -- # Standard metadata for higher-level stamped data types.
+    -- # This is generally used to communicate timestamped data 
+    -- # in a particular coordinate frame.
+    -- # 
+    -- # sequence ID: consecutively increasing ID 
+    -- uint32 seq
+    -- #Two-integer timestamp that is expressed as:
+    -- # * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
+    -- # * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
+    -- # time-handling sugar is provided by the client library
+    -- time stamp
+    -- #Frame this data is associated with
+    -- # 0: no frame
+    -- # 1: global frame
+    -- string frame_id
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Wrench
+    -- # This represents force in free space, separated into
+    -- # its linear and angular parts.
+    -- Vector3  force
+    -- Vector3  torque
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Vector3
+    -- # This represents a vector in free space. 
+    -- # It is only meant to represent a direction. Therefore, it does not
+    -- # make sense to apply a translation to it (e.g., when applying a 
+    -- # generic rigid transformation to a Vector3, tf2 will only apply the
+    -- # rotation). If you want your data to be translatable too, use the
+    -- # geometry_msgs/Point message instead.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z    -- ================================================================================
+    -- ASN.1 type for Geometry-msgs-Types/WrenchStamped
+    Geometry-msgs-WrenchStamped ::= SEQUENCE
+    {
+        header Std-msgs-Header,
+        wrench Geometry-msgs-Wrench
+    }
+    -- ================================================================================
+
+END

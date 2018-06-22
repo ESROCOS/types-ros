@@ -1,0 +1,49 @@
+-- Generated from userdefs.asn.mako for package std_msgs
+
+UserDefs-Std-msgs-Types DEFINITIONS ::=
+BEGIN
+
+IMPORTS T-UInt32 FROM TASTE-BasicTypes;
+
+    -- Dummy type (TASTE doesn't handle the includes correctly if an ASN.1 file defines only constants)
+    Dummy-Std-msgs-Types-T ::= T-UInt32
+
+    -- Size constants definitions: to be set according to the application's needs
+
+    -- Size constant for type Std-msgs-UInt8MultiArray
+    max-Std-msgs-UInt8MultiArray T-UInt32 ::= 60
+
+    -- Size constant for type Std-msgs-Int16MultiArray
+    max-Std-msgs-Int16MultiArray T-UInt32 ::= 60
+
+    -- Size constant for type Std-msgs-Int32MultiArray
+    max-Std-msgs-Int32MultiArray T-UInt32 ::= 60
+
+    -- Size constant for type Std-msgs-Float32MultiArray
+    max-Std-msgs-Float32MultiArray T-UInt32 ::= 60
+
+    -- Size constant for type Std-msgs-UInt16MultiArray
+    max-Std-msgs-UInt16MultiArray T-UInt32 ::= 60
+
+    -- Size constant for type Std-msgs-ByteMultiArray
+    max-Std-msgs-ByteMultiArray T-UInt32 ::= 60
+
+    -- Size constant for type Std-msgs-MultiArrayLayout
+    max-Std-msgs-MultiArrayLayout T-UInt32 ::= 60
+
+    -- Size constant for type Std-msgs-Float64MultiArray
+    max-Std-msgs-Float64MultiArray T-UInt32 ::= 60
+
+    -- Size constant for type Std-msgs-Int8MultiArray
+    max-Std-msgs-Int8MultiArray T-UInt32 ::= 60
+
+    -- Size constant for type Std-msgs-UInt64MultiArray
+    max-Std-msgs-UInt64MultiArray T-UInt32 ::= 60
+
+    -- Size constant for type Std-msgs-Int64MultiArray
+    max-Std-msgs-Int64MultiArray T-UInt32 ::= 60
+
+    -- Size constant for type Std-msgs-UInt32MultiArray
+    max-Std-msgs-UInt32MultiArray T-UInt32 ::= 60
+
+END

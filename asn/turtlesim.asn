@@ -1,0 +1,46 @@
+-- Generated from package.asn.mako for package turtlesim
+
+Turtlesim-Types DEFINITIONS ::=
+BEGIN
+
+IMPORTS
+T-Boolean, T-Int8, T-UInt8, T-Int32, T-UInt32 FROM TASTE-BasicTypes
+T-Int16, T-UInt16, T-Int64, T-UInt64, T-Float, T-Double, T-String, T-Time FROM TASTE-ExtendedTypes
+;
+    -- ================================================================================
+    -- Message Turtlesim-Types/Color
+    -- ================================================================================
+    -- uint8 r
+    -- uint8 g
+    -- uint8 b
+    -- ================================================================================
+    -- ASN.1 type for Turtlesim-Types/Color
+    Turtlesim-Color ::= SEQUENCE
+    {
+        r T-UInt8,
+        g T-UInt8,
+        b T-UInt8
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Turtlesim-Types/Pose
+    -- ================================================================================
+    -- float32 x
+    -- float32 y
+    -- float32 theta
+    -- 
+    -- float32 linear_velocity
+    -- float32 angular_velocity    -- ================================================================================
+    -- ASN.1 type for Turtlesim-Types/Pose
+    Turtlesim-Pose ::= SEQUENCE
+    {
+        x T-Float,
+        y T-Float,
+        theta T-Float,
+        linear-velocity T-Float,
+        angular-velocity T-Float
+    }
+    -- ================================================================================
+
+END

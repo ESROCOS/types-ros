@@ -1,0 +1,24 @@
+-- Generated from package.asn.mako for package roscpp
+
+Roscpp-Types DEFINITIONS ::=
+BEGIN
+
+IMPORTS
+T-Boolean, T-Int8, T-UInt8, T-Int32, T-UInt32 FROM TASTE-BasicTypes
+T-Int16, T-UInt16, T-Int64, T-UInt64, T-Float, T-Double, T-String, T-Time FROM TASTE-ExtendedTypes
+;
+    -- ================================================================================
+    -- Message Roscpp-Types/Logger
+    -- ================================================================================
+    -- string name
+    -- string level
+    -- ================================================================================
+    -- ASN.1 type for Roscpp-Types/Logger
+    Roscpp-Logger ::= SEQUENCE
+    {
+        name-value T-String,
+        level T-String
+    }
+    -- ================================================================================
+
+END

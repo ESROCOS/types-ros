@@ -1,0 +1,25 @@
+-- Generated from userdefs.asn.mako for package trajectory_msgs
+
+UserDefs-Trajectory-msgs-Types DEFINITIONS ::=
+BEGIN
+
+IMPORTS T-UInt32 FROM TASTE-BasicTypes;
+
+    -- Dummy type (TASTE doesn't handle the includes correctly if an ASN.1 file defines only constants)
+    Dummy-Trajectory-msgs-Types-T ::= T-UInt32
+
+    -- Size constants definitions: to be set according to the application's needs
+
+    -- Size constant for type Trajectory-msgs-JointTrajectory
+    max-Trajectory-msgs-JointTrajectory T-UInt32 ::= 60
+
+    -- Size constant for type Trajectory-msgs-MultiDOFJointTrajectoryPoint
+    max-Trajectory-msgs-MultiDOFJointTrajectoryPoint T-UInt32 ::= 60
+
+    -- Size constant for type Trajectory-msgs-MultiDOFJointTrajectory
+    max-Trajectory-msgs-MultiDOFJointTrajectory T-UInt32 ::= 60
+
+    -- Size constant for type Trajectory-msgs-JointTrajectoryPoint
+    max-Trajectory-msgs-JointTrajectoryPoint T-UInt32 ::= 60
+
+END

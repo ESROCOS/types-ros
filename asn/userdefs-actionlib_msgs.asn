@@ -1,0 +1,16 @@
+-- Generated from userdefs.asn.mako for package actionlib_msgs
+
+UserDefs-Actionlib-msgs-Types DEFINITIONS ::=
+BEGIN
+
+IMPORTS T-UInt32 FROM TASTE-BasicTypes;
+
+    -- Dummy type (TASTE doesn't handle the includes correctly if an ASN.1 file defines only constants)
+    Dummy-Actionlib-msgs-Types-T ::= T-UInt32
+
+    -- Size constants definitions: to be set according to the application's needs
+
+    -- Size constant for type Actionlib-msgs-GoalStatusArray
+    max-Actionlib-msgs-GoalStatusArray T-UInt32 ::= 60
+
+END

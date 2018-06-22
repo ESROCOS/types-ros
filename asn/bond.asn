@@ -1,0 +1,69 @@
+-- Generated from package.asn.mako for package bond
+
+Bond-Types DEFINITIONS ::=
+BEGIN
+
+IMPORTS
+T-Boolean, T-Int8, T-UInt8, T-Int32, T-UInt32 FROM TASTE-BasicTypes
+T-Int16, T-UInt16, T-Int64, T-UInt64, T-Float, T-Double, T-String, T-Time FROM TASTE-ExtendedTypes
+Std-msgs-Header FROM Std-msgs-Types
+;
+    -- ================================================================================
+    -- Message Bond-Types/Constants
+    -- ================================================================================
+    -- float32 DEAD_PUBLISH_PERIOD = 0.05
+    -- float32 DEFAULT_CONNECT_TIMEOUT = 10.0
+    -- float32 DEFAULT_HEARTBEAT_TIMEOUT = 4.0
+    -- float32 DEFAULT_DISCONNECT_TIMEOUT = 2.0
+    -- float32 DEFAULT_HEARTBEAT_PERIOD = 1.0
+    -- 
+    -- string DISABLE_HEARTBEAT_TIMEOUT_PARAM=/bond_disable_heartbeat_timeout    -- ================================================================================
+    -- ASN.1 type for Bond-Types/Constants
+    Bond-Constants ::= SEQUENCE
+    {
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Bond-Types/Status
+    -- ================================================================================
+    -- Header header
+    -- string id  # ID of the bond
+    -- string instance_id  # Unique ID for an individual in a bond
+    -- bool active
+    -- 
+    -- # Including the timeouts for the bond makes it easier to debug mis-matches
+    -- # between the two sides.
+    -- float32 heartbeat_timeout
+    -- float32 heartbeat_period
+    -- ================================================================================
+    -- MSG: std_msgs/Header
+    -- # Standard metadata for higher-level stamped data types.
+    -- # This is generally used to communicate timestamped data 
+    -- # in a particular coordinate frame.
+    -- # 
+    -- # sequence ID: consecutively increasing ID 
+    -- uint32 seq
+    -- #Two-integer timestamp that is expressed as:
+    -- # * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
+    -- # * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
+    -- # time-handling sugar is provided by the client library
+    -- time stamp
+    -- #Frame this data is associated with
+    -- # 0: no frame
+    -- # 1: global frame
+    -- string frame_id
+    -- ================================================================================
+    -- ASN.1 type for Bond-Types/Status
+    Bond-Status ::= SEQUENCE
+    {
+        header Std-msgs-Header,
+        id T-String,
+        instance-id T-String,
+        active-value T-Boolean,
+        heartbeat-timeout T-Float,
+        heartbeat-period T-Float
+    }
+    -- ================================================================================
+
+END

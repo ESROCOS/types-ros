@@ -1,0 +1,122 @@
+-- Generated from package.asn.mako for package shape_msgs
+
+Shape-msgs-Types DEFINITIONS ::=
+BEGIN
+
+IMPORTS
+T-Boolean, T-Int8, T-UInt8, T-Int32, T-UInt32 FROM TASTE-BasicTypes
+T-Int16, T-UInt16, T-Int64, T-UInt64, T-Float, T-Double, T-String, T-Time FROM TASTE-ExtendedTypes
+Geometry-msgs-Point FROM Geometry-msgs-Types
+max-Shape-msgs-SolidPrimitive, max-Shape-msgs-Mesh, Dummy-Shape-msgs-Types-T FROM UserDefs-Shape-msgs-Types;
+    -- ================================================================================
+    -- Message Shape-msgs-Types/Mesh
+    -- ================================================================================
+    -- # Definition of a mesh
+    -- 
+    -- # list of triangles; the index values refer to positions in vertices[]
+    -- MeshTriangle[] triangles
+    -- 
+    -- # the actual vertices that make up the mesh
+    -- geometry_msgs/Point[] vertices
+    -- 
+    -- ================================================================================
+    -- MSG: shape_msgs/MeshTriangle
+    -- # Definition of a triangle's vertices
+    -- uint32[3] vertex_indices
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Point
+    -- # This contains the position of a point in free space
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- ================================================================================
+    -- ASN.1 type for Shape-msgs-Types/Mesh
+    Shape-msgs-Mesh ::= SEQUENCE
+    {
+        triangles SEQUENCE (SIZE(0..max-Shape-msgs-Mesh)) OF Shape-msgs-MeshTriangle,
+        vertices SEQUENCE (SIZE(0..max-Shape-msgs-Mesh)) OF Geometry-msgs-Point
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Shape-msgs-Types/MeshTriangle
+    -- ================================================================================
+    -- # Definition of a triangle's vertices
+    -- uint32[3] vertex_indices
+    -- ================================================================================
+    -- ASN.1 type for Shape-msgs-Types/MeshTriangle
+    Shape-msgs-MeshTriangle ::= SEQUENCE (SIZE(3)) OF T-UInt32
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Shape-msgs-Types/Plane
+    -- ================================================================================
+    -- # Representation of a plane, using the plane equation ax + by + cz + d = 0
+    -- 
+    -- # a := coef[0]
+    -- # b := coef[1]
+    -- # c := coef[2]
+    -- # d := coef[3]
+    -- 
+    -- float64[4] coef
+    -- ================================================================================
+    -- ASN.1 type for Shape-msgs-Types/Plane
+    Shape-msgs-Plane ::= SEQUENCE (SIZE(4)) OF T-Double
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Shape-msgs-Types/SolidPrimitive
+    -- ================================================================================
+    -- # Define box, sphere, cylinder, cone 
+    -- # All shapes are defined to have their bounding boxes centered around 0,0,0.
+    -- 
+    -- uint8 BOX=1
+    -- uint8 SPHERE=2
+    -- uint8 CYLINDER=3
+    -- uint8 CONE=4
+    -- 
+    -- # The type of the shape
+    -- uint8 type
+    -- 
+    -- 
+    -- # The dimensions of the shape
+    -- float64[] dimensions
+    -- 
+    -- # The meaning of the shape dimensions: each constant defines the index in the 'dimensions' array
+    -- 
+    -- # For the BOX type, the X, Y, and Z dimensions are the length of the corresponding
+    -- # sides of the box.
+    -- uint8 BOX_X=0
+    -- uint8 BOX_Y=1
+    -- uint8 BOX_Z=2
+    -- 
+    -- 
+    -- # For the SPHERE type, only one component is used, and it gives the radius of
+    -- # the sphere.
+    -- uint8 SPHERE_RADIUS=0
+    -- 
+    -- 
+    -- # For the CYLINDER and CONE types, the center line is oriented along
+    -- # the Z axis.  Therefore the CYLINDER_HEIGHT (CONE_HEIGHT) component
+    -- # of dimensions gives the height of the cylinder (cone).  The
+    -- # CYLINDER_RADIUS (CONE_RADIUS) component of dimensions gives the
+    -- # radius of the base of the cylinder (cone).  Cone and cylinder
+    -- # primitives are defined to be circular. The tip of the cone is
+    -- # pointing up, along +Z axis.
+    -- 
+    -- uint8 CYLINDER_HEIGHT=0
+    -- uint8 CYLINDER_RADIUS=1
+    -- 
+    -- uint8 CONE_HEIGHT=0
+    -- uint8 CONE_RADIUS=1
+    -- ================================================================================
+    -- ASN.1 type for Shape-msgs-Types/SolidPrimitive
+    Shape-msgs-SolidPrimitive ::= SEQUENCE
+    {
+        type-value T-UInt8,
+        dimensions SEQUENCE (SIZE(0..max-Shape-msgs-SolidPrimitive)) OF T-Double
+    }
+    -- ================================================================================
+
+END

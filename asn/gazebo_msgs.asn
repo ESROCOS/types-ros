@@ -1,0 +1,537 @@
+-- Generated from package.asn.mako for package gazebo_msgs
+
+Gazebo-msgs-Types DEFINITIONS ::=
+BEGIN
+
+IMPORTS
+T-Boolean, T-Int8, T-UInt8, T-Int32, T-UInt32 FROM TASTE-BasicTypes
+T-Int16, T-UInt16, T-Int64, T-UInt64, T-Float, T-Double, T-String, T-Time FROM TASTE-ExtendedTypes
+Std-msgs-Header FROM Std-msgs-Types
+Geometry-msgs-Twist, Geometry-msgs-Pose, Geometry-msgs-Vector3, Geometry-msgs-Wrench FROM Geometry-msgs-Types
+max-Gazebo-msgs-ODEJointProperties, max-Gazebo-msgs-ModelStates, max-Gazebo-msgs-ContactState, max-Gazebo-msgs-LinkStates, max-Gazebo-msgs-ContactsState, max-Gazebo-msgs-WorldState, Dummy-Gazebo-msgs-Types-T FROM UserDefs-Gazebo-msgs-Types;
+    -- ================================================================================
+    -- Message Gazebo-msgs-Types/ContactState
+    -- ================================================================================
+    -- string info                                   # text info on this contact
+    -- string collision1_name                        # name of contact collision1
+    -- string collision2_name                        # name of contact collision2
+    -- geometry_msgs/Wrench[] wrenches               # list of forces/torques
+    -- geometry_msgs/Wrench total_wrench             # sum of forces/torques in every DOF
+    -- geometry_msgs/Vector3[] contact_positions     # list of contact position
+    -- geometry_msgs/Vector3[] contact_normals       # list of contact normals
+    -- float64[] depths                              # list of penetration depths
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Wrench
+    -- # This represents force in free space, separated into
+    -- # its linear and angular parts.
+    -- Vector3  force
+    -- Vector3  torque
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Vector3
+    -- # This represents a vector in free space. 
+    -- # It is only meant to represent a direction. Therefore, it does not
+    -- # make sense to apply a translation to it (e.g., when applying a 
+    -- # generic rigid transformation to a Vector3, tf2 will only apply the
+    -- # rotation). If you want your data to be translatable too, use the
+    -- # geometry_msgs/Point message instead.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z    -- ================================================================================
+    -- ASN.1 type for Gazebo-msgs-Types/ContactState
+    Gazebo-msgs-ContactState ::= SEQUENCE
+    {
+        info T-String,
+        collision1-name T-String,
+        collision2-name T-String,
+        wrenches SEQUENCE (SIZE(0..max-Gazebo-msgs-ContactState)) OF Geometry-msgs-Wrench,
+        total-wrench Geometry-msgs-Wrench,
+        contact-positions SEQUENCE (SIZE(0..max-Gazebo-msgs-ContactState)) OF Geometry-msgs-Vector3,
+        contact-normals SEQUENCE (SIZE(0..max-Gazebo-msgs-ContactState)) OF Geometry-msgs-Vector3,
+        depths SEQUENCE (SIZE(0..max-Gazebo-msgs-ContactState)) OF T-Double
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Gazebo-msgs-Types/ContactsState
+    -- ================================================================================
+    -- Header header                                   # stamp
+    -- gazebo_msgs/ContactState[] states            # array of geom pairs in contact
+    -- 
+    -- ================================================================================
+    -- MSG: std_msgs/Header
+    -- # Standard metadata for higher-level stamped data types.
+    -- # This is generally used to communicate timestamped data 
+    -- # in a particular coordinate frame.
+    -- # 
+    -- # sequence ID: consecutively increasing ID 
+    -- uint32 seq
+    -- #Two-integer timestamp that is expressed as:
+    -- # * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
+    -- # * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
+    -- # time-handling sugar is provided by the client library
+    -- time stamp
+    -- #Frame this data is associated with
+    -- # 0: no frame
+    -- # 1: global frame
+    -- string frame_id
+    -- 
+    -- ================================================================================
+    -- MSG: gazebo_msgs/ContactState
+    -- string info                                   # text info on this contact
+    -- string collision1_name                        # name of contact collision1
+    -- string collision2_name                        # name of contact collision2
+    -- geometry_msgs/Wrench[] wrenches               # list of forces/torques
+    -- geometry_msgs/Wrench total_wrench             # sum of forces/torques in every DOF
+    -- geometry_msgs/Vector3[] contact_positions     # list of contact position
+    -- geometry_msgs/Vector3[] contact_normals       # list of contact normals
+    -- float64[] depths                              # list of penetration depths
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Wrench
+    -- # This represents force in free space, separated into
+    -- # its linear and angular parts.
+    -- Vector3  force
+    -- Vector3  torque
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Vector3
+    -- # This represents a vector in free space. 
+    -- # It is only meant to represent a direction. Therefore, it does not
+    -- # make sense to apply a translation to it (e.g., when applying a 
+    -- # generic rigid transformation to a Vector3, tf2 will only apply the
+    -- # rotation). If you want your data to be translatable too, use the
+    -- # geometry_msgs/Point message instead.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z    -- ================================================================================
+    -- ASN.1 type for Gazebo-msgs-Types/ContactsState
+    Gazebo-msgs-ContactsState ::= SEQUENCE
+    {
+        header Std-msgs-Header,
+        states SEQUENCE (SIZE(0..max-Gazebo-msgs-ContactsState)) OF Gazebo-msgs-ContactState
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Gazebo-msgs-Types/LinkState
+    -- ================================================================================
+    -- # @todo: FIXME: sets pose and twist of a link.  All children link poses/twists of the URDF tree are not updated accordingly, but should be.
+    -- string link_name            # link name, link_names are in gazebo scoped name notation, [model_name::body_name]
+    -- geometry_msgs/Pose pose     # desired pose in reference frame
+    -- geometry_msgs/Twist twist   # desired twist in reference frame
+    -- string reference_frame      # set pose/twist relative to the frame of this link/body
+    --                             # leave empty or "world" or "map" defaults to world-frame
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Pose
+    -- # A representation of pose in free space, composed of position and orientation. 
+    -- Point position
+    -- Quaternion orientation
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Point
+    -- # This contains the position of a point in free space
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Quaternion
+    -- # This represents an orientation in free space in quaternion form.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- float64 w
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Twist
+    -- # This expresses velocity in free space broken into its linear and angular parts.
+    -- Vector3  linear
+    -- Vector3  angular
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Vector3
+    -- # This represents a vector in free space. 
+    -- # It is only meant to represent a direction. Therefore, it does not
+    -- # make sense to apply a translation to it (e.g., when applying a 
+    -- # generic rigid transformation to a Vector3, tf2 will only apply the
+    -- # rotation). If you want your data to be translatable too, use the
+    -- # geometry_msgs/Point message instead.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z    -- ================================================================================
+    -- ASN.1 type for Gazebo-msgs-Types/LinkState
+    Gazebo-msgs-LinkState ::= SEQUENCE
+    {
+        link-name T-String,
+        pose Geometry-msgs-Pose,
+        twist Geometry-msgs-Twist,
+        reference-frame T-String
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Gazebo-msgs-Types/LinkStates
+    -- ================================================================================
+    -- # broadcast all link states in world frame
+    -- string[] name                 # link names
+    -- geometry_msgs/Pose[] pose     # desired pose in world frame
+    -- geometry_msgs/Twist[] twist   # desired twist in world frame
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Pose
+    -- # A representation of pose in free space, composed of position and orientation. 
+    -- Point position
+    -- Quaternion orientation
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Point
+    -- # This contains the position of a point in free space
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Quaternion
+    -- # This represents an orientation in free space in quaternion form.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- float64 w
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Twist
+    -- # This expresses velocity in free space broken into its linear and angular parts.
+    -- Vector3  linear
+    -- Vector3  angular
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Vector3
+    -- # This represents a vector in free space. 
+    -- # It is only meant to represent a direction. Therefore, it does not
+    -- # make sense to apply a translation to it (e.g., when applying a 
+    -- # generic rigid transformation to a Vector3, tf2 will only apply the
+    -- # rotation). If you want your data to be translatable too, use the
+    -- # geometry_msgs/Point message instead.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z    -- ================================================================================
+    -- ASN.1 type for Gazebo-msgs-Types/LinkStates
+    Gazebo-msgs-LinkStates ::= SEQUENCE
+    {
+        name-value SEQUENCE (SIZE(0..max-Gazebo-msgs-LinkStates)) OF T-String,
+        pose SEQUENCE (SIZE(0..max-Gazebo-msgs-LinkStates)) OF Geometry-msgs-Pose,
+        twist SEQUENCE (SIZE(0..max-Gazebo-msgs-LinkStates)) OF Geometry-msgs-Twist
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Gazebo-msgs-Types/ModelState
+    -- ================================================================================
+    -- # Set Gazebo Model pose and twist
+    -- string model_name           # model to set state (pose and twist)
+    -- geometry_msgs/Pose pose     # desired pose in reference frame
+    -- geometry_msgs/Twist twist   # desired twist in reference frame
+    -- string reference_frame      # set pose/twist relative to the frame of this entity (Body/Model)
+    --                             # leave empty or "world" or "map" defaults to world-frame
+    -- 
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Pose
+    -- # A representation of pose in free space, composed of position and orientation. 
+    -- Point position
+    -- Quaternion orientation
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Point
+    -- # This contains the position of a point in free space
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Quaternion
+    -- # This represents an orientation in free space in quaternion form.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- float64 w
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Twist
+    -- # This expresses velocity in free space broken into its linear and angular parts.
+    -- Vector3  linear
+    -- Vector3  angular
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Vector3
+    -- # This represents a vector in free space. 
+    -- # It is only meant to represent a direction. Therefore, it does not
+    -- # make sense to apply a translation to it (e.g., when applying a 
+    -- # generic rigid transformation to a Vector3, tf2 will only apply the
+    -- # rotation). If you want your data to be translatable too, use the
+    -- # geometry_msgs/Point message instead.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z    -- ================================================================================
+    -- ASN.1 type for Gazebo-msgs-Types/ModelState
+    Gazebo-msgs-ModelState ::= SEQUENCE
+    {
+        model-name T-String,
+        pose Geometry-msgs-Pose,
+        twist Geometry-msgs-Twist,
+        reference-frame T-String
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Gazebo-msgs-Types/ModelStates
+    -- ================================================================================
+    -- # broadcast all model states in world frame
+    -- string[] name                 # model names
+    -- geometry_msgs/Pose[] pose     # desired pose in world frame
+    -- geometry_msgs/Twist[] twist   # desired twist in world frame
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Pose
+    -- # A representation of pose in free space, composed of position and orientation. 
+    -- Point position
+    -- Quaternion orientation
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Point
+    -- # This contains the position of a point in free space
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Quaternion
+    -- # This represents an orientation in free space in quaternion form.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- float64 w
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Twist
+    -- # This expresses velocity in free space broken into its linear and angular parts.
+    -- Vector3  linear
+    -- Vector3  angular
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Vector3
+    -- # This represents a vector in free space. 
+    -- # It is only meant to represent a direction. Therefore, it does not
+    -- # make sense to apply a translation to it (e.g., when applying a 
+    -- # generic rigid transformation to a Vector3, tf2 will only apply the
+    -- # rotation). If you want your data to be translatable too, use the
+    -- # geometry_msgs/Point message instead.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z    -- ================================================================================
+    -- ASN.1 type for Gazebo-msgs-Types/ModelStates
+    Gazebo-msgs-ModelStates ::= SEQUENCE
+    {
+        name-value SEQUENCE (SIZE(0..max-Gazebo-msgs-ModelStates)) OF T-String,
+        pose SEQUENCE (SIZE(0..max-Gazebo-msgs-ModelStates)) OF Geometry-msgs-Pose,
+        twist SEQUENCE (SIZE(0..max-Gazebo-msgs-ModelStates)) OF Geometry-msgs-Twist
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Gazebo-msgs-Types/ODEJointProperties
+    -- ================================================================================
+    -- # access to low level joint properties, change these at your own risk
+    -- float64[] damping             # joint damping
+    -- float64[] hiStop              # joint limit
+    -- float64[] loStop              # joint limit
+    -- float64[] erp                 # set joint erp
+    -- float64[] cfm                 # set joint cfm
+    -- float64[] stop_erp            # set joint erp for joint limit "contact" joint
+    -- float64[] stop_cfm            # set joint cfm for joint limit "contact" joint
+    -- float64[] fudge_factor        # joint fudge_factor applied at limits, see ODE manual for info.
+    -- float64[] fmax                # ode joint param fmax
+    -- float64[] vel                 # ode joint param vel
+    -- ================================================================================
+    -- ASN.1 type for Gazebo-msgs-Types/ODEJointProperties
+    Gazebo-msgs-ODEJointProperties ::= SEQUENCE
+    {
+        damping SEQUENCE (SIZE(0..max-Gazebo-msgs-ODEJointProperties)) OF T-Double,
+        hiStop SEQUENCE (SIZE(0..max-Gazebo-msgs-ODEJointProperties)) OF T-Double,
+        loStop SEQUENCE (SIZE(0..max-Gazebo-msgs-ODEJointProperties)) OF T-Double,
+        erp SEQUENCE (SIZE(0..max-Gazebo-msgs-ODEJointProperties)) OF T-Double,
+        cfm SEQUENCE (SIZE(0..max-Gazebo-msgs-ODEJointProperties)) OF T-Double,
+        stop-erp SEQUENCE (SIZE(0..max-Gazebo-msgs-ODEJointProperties)) OF T-Double,
+        stop-cfm SEQUENCE (SIZE(0..max-Gazebo-msgs-ODEJointProperties)) OF T-Double,
+        fudge-factor SEQUENCE (SIZE(0..max-Gazebo-msgs-ODEJointProperties)) OF T-Double,
+        fmax SEQUENCE (SIZE(0..max-Gazebo-msgs-ODEJointProperties)) OF T-Double,
+        vel SEQUENCE (SIZE(0..max-Gazebo-msgs-ODEJointProperties)) OF T-Double
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Gazebo-msgs-Types/ODEPhysics
+    -- ================================================================================
+    -- bool auto_disable_bodies           # enable auto disabling of bodies, default false
+    -- uint32 sor_pgs_precon_iters        # preconditioning inner iterations when uisng projected Gauss Seidel
+    -- uint32 sor_pgs_iters               # inner iterations when uisng projected Gauss Seidel
+    -- float64 sor_pgs_w                  # relaxation parameter when using projected Gauss Seidel, 1 = no relaxation
+    -- float64 sor_pgs_rms_error_tol      # rms error tolerance before stopping inner iterations
+    -- float64 contact_surface_layer      # contact "dead-band" width
+    -- float64 contact_max_correcting_vel # contact maximum correction velocity
+    -- float64 cfm                        # global constraint force mixing
+    -- float64 erp                        # global error reduction parameter
+    -- uint32 max_contacts                # maximum contact joints between two geoms
+    -- ================================================================================
+    -- ASN.1 type for Gazebo-msgs-Types/ODEPhysics
+    Gazebo-msgs-ODEPhysics ::= SEQUENCE
+    {
+        auto-disable-bodies T-Boolean,
+        sor-pgs-precon-iters T-UInt32,
+        sor-pgs-iters T-UInt32,
+        sor-pgs-w T-Double,
+        sor-pgs-rms-error-tol T-Double,
+        contact-surface-layer T-Double,
+        contact-max-correcting-vel T-Double,
+        cfm T-Double,
+        erp T-Double,
+        max-contacts T-UInt32
+    }
+    -- ================================================================================
+
+    -- ================================================================================
+    -- Message Gazebo-msgs-Types/WorldState
+    -- ================================================================================
+    -- # This is a message that holds data necessary to reconstruct a snapshot of the world
+    -- #
+    -- # = Approach to Message Passing =
+    -- # The state of the world is defined by either
+    -- #   1. Inertial Model pose, twist
+    -- #      * kinematic data - connectivity graph from Model to each Link
+    -- #      * joint angles
+    -- #      * joint velocities
+    -- #      * Applied forces - Body wrench
+    -- #        * relative transform from Body to each collision Geom
+    -- # Or
+    -- #   2. Inertial (absolute) Body pose, twist, wrench
+    -- #      * relative transform from Body to each collision Geom - constant, so not sent over wire
+    -- #      * back compute from canonical body info to get Model pose and twist.
+    -- #
+    -- # Chooing (2.) because it matches most physics engines out there
+    -- #   and is simpler.
+    -- #
+    -- # = Future =
+    -- # Consider impacts on using reduced coordinates / graph (parent/child links) approach
+    -- #   constraint and physics solvers.
+    -- #
+    -- # = Application =
+    -- # This message is used to do the following:
+    -- #   * reconstruct the world and objects for sensor generation
+    -- #   * stop / start simulation - need pose, twist, wrench of each body
+    -- #   * collision detection - need pose of each collision geometry.  velocity/acceleration if
+    -- #
+    -- # = Assumptions =
+    -- # Assuming that each (physics) processor node locally already has
+    -- #   * collision information - Trimesh for Geoms, etc
+    -- #   * relative transforms from Body to Geom - this is assumed to be fixed, do not send oved wire
+    -- #   * inertial information - does not vary in time
+    -- #   * visual information - does not vary in time
+    -- #
+    -- 
+    -- Header header
+    -- 
+    -- string[] name
+    -- geometry_msgs/Pose[] pose
+    -- geometry_msgs/Twist[] twist
+    -- geometry_msgs/Wrench[] wrench
+    -- 
+    -- ================================================================================
+    -- MSG: std_msgs/Header
+    -- # Standard metadata for higher-level stamped data types.
+    -- # This is generally used to communicate timestamped data 
+    -- # in a particular coordinate frame.
+    -- # 
+    -- # sequence ID: consecutively increasing ID 
+    -- uint32 seq
+    -- #Two-integer timestamp that is expressed as:
+    -- # * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
+    -- # * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
+    -- # time-handling sugar is provided by the client library
+    -- time stamp
+    -- #Frame this data is associated with
+    -- # 0: no frame
+    -- # 1: global frame
+    -- string frame_id
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Pose
+    -- # A representation of pose in free space, composed of position and orientation. 
+    -- Point position
+    -- Quaternion orientation
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Point
+    -- # This contains the position of a point in free space
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Quaternion
+    -- # This represents an orientation in free space in quaternion form.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- float64 w
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Twist
+    -- # This expresses velocity in free space broken into its linear and angular parts.
+    -- Vector3  linear
+    -- Vector3  angular
+    -- 
+    -- ================================================================================
+    -- MSG: geometry_msgs/Vector3
+    -- # This represents a vector in free space. 
+    -- # It is only meant to represent a direction. Therefore, it does not
+    -- # make sense to apply a translation to it (e.g., when applying a 
+    -- # generic rigid transformation to a Vector3, tf2 will only apply the
+    -- # rotation). If you want your data to be translatable too, use the
+    -- # geometry_msgs/Point message instead.
+    -- 
+    -- float64 x
+    -- float64 y
+    -- float64 z
+    -- ================================================================================
+    -- MSG: geometry_msgs/Wrench
+    -- # This represents force in free space, separated into
+    -- # its linear and angular parts.
+    -- Vector3  force
+    -- Vector3  torque
+    -- ================================================================================
+    -- ASN.1 type for Gazebo-msgs-Types/WorldState
+    Gazebo-msgs-WorldState ::= SEQUENCE
+    {
+        header Std-msgs-Header,
+        name-value SEQUENCE (SIZE(0..max-Gazebo-msgs-WorldState)) OF T-String,
+        pose SEQUENCE (SIZE(0..max-Gazebo-msgs-WorldState)) OF Geometry-msgs-Pose,
+        twist SEQUENCE (SIZE(0..max-Gazebo-msgs-WorldState)) OF Geometry-msgs-Twist,
+        wrench SEQUENCE (SIZE(0..max-Gazebo-msgs-WorldState)) OF Geometry-msgs-Wrench
+    }
+    -- ================================================================================
+
+END

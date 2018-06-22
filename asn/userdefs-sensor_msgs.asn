@@ -1,0 +1,55 @@
+-- Generated from userdefs.asn.mako for package sensor_msgs
+
+UserDefs-Sensor-msgs-Types DEFINITIONS ::=
+BEGIN
+
+IMPORTS T-UInt32 FROM TASTE-BasicTypes;
+
+    -- Dummy type (TASTE doesn't handle the includes correctly if an ASN.1 file defines only constants)
+    Dummy-Sensor-msgs-Types-T ::= T-UInt32
+
+    -- Size constants definitions: to be set according to the application's needs
+
+    -- Size constant for type Sensor-msgs-CameraInfo
+    max-Sensor-msgs-CameraInfo T-UInt32 ::= 60
+
+    -- Size constant for type Sensor-msgs-Joy
+    max-Sensor-msgs-Joy T-UInt32 ::= 60
+
+    -- Size constant for type Sensor-msgs-Image
+    max-Sensor-msgs-Image T-UInt32 ::= 60
+
+    -- Size constant for type Sensor-msgs-LaserScan
+    max-Sensor-msgs-LaserScan T-UInt32 ::= 60
+
+    -- Size constant for type Sensor-msgs-MultiEchoLaserScan
+    max-Sensor-msgs-MultiEchoLaserScan T-UInt32 ::= 60
+
+    -- Size constant for type Sensor-msgs-JointState
+    max-Sensor-msgs-JointState T-UInt32 ::= 60
+
+    -- Size constant for type Sensor-msgs-JoyFeedbackArray
+    max-Sensor-msgs-JoyFeedbackArray T-UInt32 ::= 60
+
+    -- Size constant for type Sensor-msgs-BatteryState
+    max-Sensor-msgs-BatteryState T-UInt32 ::= 60
+
+    -- Size constant for type Sensor-msgs-LaserEcho
+    max-Sensor-msgs-LaserEcho T-UInt32 ::= 60
+
+    -- Size constant for type Sensor-msgs-ChannelFloat32
+    max-Sensor-msgs-ChannelFloat32 T-UInt32 ::= 60
+
+    -- Size constant for type Sensor-msgs-CompressedImage
+    max-Sensor-msgs-CompressedImage T-UInt32 ::= 60
+
+    -- Size constant for type Sensor-msgs-PointCloud
+    max-Sensor-msgs-PointCloud T-UInt32 ::= 60
+
+    -- Size constant for type Sensor-msgs-PointCloud2
+    max-Sensor-msgs-PointCloud2 T-UInt32 ::= 60
+
+    -- Size constant for type Sensor-msgs-MultiDOFJointState
+    max-Sensor-msgs-MultiDOFJointState T-UInt32 ::= 60
+
+END

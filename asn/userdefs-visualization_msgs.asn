@@ -1,0 +1,34 @@
+-- Generated from userdefs.asn.mako for package visualization_msgs
+
+UserDefs-Visualization-msgs-Types DEFINITIONS ::=
+BEGIN
+
+IMPORTS T-UInt32 FROM TASTE-BasicTypes;
+
+    -- Dummy type (TASTE doesn't handle the includes correctly if an ASN.1 file defines only constants)
+    Dummy-Visualization-msgs-Types-T ::= T-UInt32
+
+    -- Size constants definitions: to be set according to the application's needs
+
+    -- Size constant for type Visualization-msgs-InteractiveMarkerInit
+    max-Visualization-msgs-InteractiveMarkerInit T-UInt32 ::= 10
+
+    -- Size constant for type Visualization-msgs-MarkerArray
+    max-Visualization-msgs-MarkerArray T-UInt32 ::= 10
+
+    -- Size constant for type Visualization-msgs-InteractiveMarkerControl
+    max-Visualization-msgs-InteractiveMarkerControl T-UInt32 ::= 10
+
+    -- Size constant for type Visualization-msgs-InteractiveMarkerUpdate
+    max-Visualization-msgs-InteractiveMarkerUpdate T-UInt32 ::= 10
+
+    -- Size constant for type Visualization-msgs-InteractiveMarker
+    max-Visualization-msgs-InteractiveMarker T-UInt32 ::= 10
+
+    -- Size constant for type Visualization-msgs-Marker
+    max-Visualization-msgs-Marker T-UInt32 ::= 10
+
+    -- Size constant for type Visualization-msgs-ImageMarker
+    max-Visualization-msgs-ImageMarker T-UInt32 ::= 10
+
+END
