@@ -1479,7 +1479,7 @@ max-Sensor-msgs-CameraInfo, max-Sensor-msgs-Joy, max-Sensor-msgs-Image, max-Sens
         field-of-view T-Float,
         min-range T-Float,
         max-range T-Float,
-        range T-Float
+        range-value T-Float
     }
     -- ================================================================================
 
