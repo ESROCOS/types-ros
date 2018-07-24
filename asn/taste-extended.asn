@@ -26,8 +26,8 @@ numT-String T-UInt32::= 60
 
 T-Time ::= SEQUENCE
 {
-    sec  T-UInt32,
-    nsec T-UInt32
+    secs  T-UInt32,
+    nsecs T-UInt32
 }
   
 END
